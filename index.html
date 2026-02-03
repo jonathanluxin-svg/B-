@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B站视频转录助手</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 B站视频转录助手</h1>
+            <p class="subtitle">将B站视频转录成中文并智能总结</p>
+        </header>
+
+        <main>
+            <!-- 输入区域 -->
+            <section class="input-section">
+                <div class="input-group">
+                    <label for="videoUrl">📺 请输入B站视频链接</label>
+                    <input 
+                        type="text" 
+                        id="videoUrl" 
+                        placeholder="https://www.bilibili.com/video/BV..." 
+                        autocomplete="off"
+                    />
+                </div>
+                <button id="processBtn" class="btn-primary">
+                    <span class="loader" style="display: none;"></span>
+                    <span class="btn-text">开始处理</span>
+                </button>
+            </section>
+
+            <!-- 视频预览 -->
+            <section id="videoPreview" class="video-preview" style="display: none;">
+                <div class="video-info">
+                    <img id="videoThumbnail" src="" alt="视频封面" class="video-thumbnail">
+                    <div class="video-details">
+                        <h3 id="videoTitle"></h3>
+                        <p><strong>UP主：</strong><span id="videoAuthor"></span></p>
+                        <p><strong>时长：</strong><span id="videoDuration"></span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 进度指示器 -->
+            <section id="progressSection" class="progress-section" style="display: none;">
+                <h2>⏳ 处理进度</h2>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-label">解析视频</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-label">提取音频</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-label">语音识别</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-label">生成总结</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 转录结果 -->
+            <section id="transcriptSection" class="result-section" style="display: none;">
+                <div class="result-header">
+                    <h2>📝 转录文本</h2>
+                    <button id="copyTranscript" class="btn-secondary">📋 复制</button>
+                </div>
+                <div id="transcriptContent" class="result-content"></div>
+            </section>
+
+            <!-- 总结结果 -->
+            <section id="summarySection" class="result-section" style="display: none;">
+                <div class="result-header">
+                    <h2>📄 视频总结</h2>
+                    <button id="copySummary" class="btn-secondary">📋 复制</button>
+                </div>
+                <div id="summaryContent" class="result-content summary-content"></div>
+            </section>
+
+            <!-- 导出选项 -->
+            <section id="exportSection" class="export-section" style="display: none;">
+                <h2>💾 导出结果</h2>
+                <div class="export-buttons">
+                    <button id="exportTxt" class="btn-export">📄 导出为TXT</button>
+                    <button id="exportMd" class="btn-export">📝 导出为Markdown</button>
+                    <button id="exportJson" class="btn-export">🔧 导出为JSON</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>💡 提示：当前为前端演示版本，后端API开发中...</p>
+            <p>⚡ 支持的链接格式：bilibili.com/video/BV... 或 b23.tv/...</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
